@@ -1,5 +1,8 @@
 package geek4Geeks.algos.recursion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecursionSet {
     public static void main(String[] args) {
         String lineseparator = "-".repeat(30);
@@ -14,6 +17,10 @@ public class RecursionSet {
         System.out.println(lineseparator);
         n = 3;
         towerOfHanoi(3, 'A', 'C', 'B');
+        System.out.println(lineseparator);
+        List<String> subset = new ArrayList<>();
+        subsetsRecursive("ABC", 0, "", subset);
+        System.out.println(subset);
     }
 
     public static void printN2One(int n) {
@@ -26,6 +33,15 @@ public class RecursionSet {
         if (n < 1) return;
         printOne2N(n - 1);
         System.out.print(n + " ");
+    }
+
+    public static void subsetsRecursive(String s, int index, String curr, List<String> subsets) {
+        if (index == s.length()) {
+            subsets.add(curr);
+            return;
+        }
+        subsetsRecursive(s, index + 1, curr, subsets);
+        subsetsRecursive(s, index + 1, curr + s.charAt(index), subsets);
     }
 
     public static void towerOfHanoi(int n, char start, char end, char aux) {
