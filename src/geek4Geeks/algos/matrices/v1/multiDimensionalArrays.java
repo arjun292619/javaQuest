@@ -22,20 +22,25 @@ public class multiDimensionalArrays {
             }
         }
 
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[i].length; j++) {
+//                System.out.printf("%-5d", arr[i][j]);
+//            }
+//        }
+        printArray(arr);
+        System.out.println();
+        printArray(multarr1);
+        System.out.println("Print the jagged Array");
+        printArray(jaggedArr);
+
+    }
+
+    private static void printArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 System.out.printf("%-5d", arr[i][j]);
             }
-        }
-        System.out.println();
-        for (int i = 0; i < multarr1.length; i++) {
-            for (int j = 0; j < multarr1[i].length; j++) {
-                System.out.printf("%-5d", multarr1[i][j]);
-            }
             System.out.println();
         }
-
-        System.out.println(Arrays.deepToString(jaggedArr));
-
     }
 }
