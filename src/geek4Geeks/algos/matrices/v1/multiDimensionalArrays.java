@@ -57,6 +57,11 @@ public class multiDimensionalArrays {
 
         System.out.println("Transpose of square arrays");
         transposeMatrix(sqArr);
+        printArray(sqArr);
+        System.out.println("Rotate by 90 degrees");
+//        rotateBy90(sqArr);
+        rotateBy90(sqArr, "naive");
+        printArray(sqArr);
     }
 
     private static void swap(int x, int y) {
@@ -125,6 +130,34 @@ public class multiDimensionalArrays {
                 mat[j][i] = temp;
             }
         }
-        printArray(mat);
+    }
+
+    private static void rotateBy90(int[][] mat) {
+        transposeMatrix(mat);
+        for (int i = 0; i < mat.length; i++) {
+            int low = 0, high = mat.length - 1;
+            while (low < high) {
+                int temp = mat[low][i];
+                mat[low][i] = mat[high][i];
+                mat[high][i] = temp;
+                low++;
+                high--;
+            }
+        }
+    }
+
+    private static void rotateBy90(int[][] mat, String type) {
+        int[][] temp = new int[mat.length][mat.length];
+        for (int r = 0; r < mat.length; r++) {
+            for (int c = 0; c < mat[r].length; c++) {
+                temp[mat.length - 1 - c][r] = mat[r][c];
+            }
+        }
+
+        for (int r = 0; r < mat.length; r++) {
+            for (int c = 0; c < mat[r].length; c++) {
+                mat[r][c] = temp[r][c];
+            }
+        }
     }
 }
