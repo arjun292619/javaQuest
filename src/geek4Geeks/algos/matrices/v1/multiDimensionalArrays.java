@@ -52,9 +52,18 @@ public class multiDimensionalArrays {
         printBoundary(rowArr);
         System.out.println();
         printBoundary(colArr);
+        System.out.println();
+        System.out.println(ls);
 
+        System.out.println("Transpose of square arrays");
+        transposeMatrix(sqArr);
     }
 
+    private static void swap(int x, int y) {
+        int temp = x;
+        x = y;
+        y = temp;
+    }
 
     private static void printArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -106,5 +115,16 @@ public class multiDimensionalArrays {
             }
         }
 
+    }
+
+    private static void transposeMatrix(int[][] mat) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = i + 1; j < mat[i].length; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;
+            }
+        }
+        printArray(mat);
     }
 }
