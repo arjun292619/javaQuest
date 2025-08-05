@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class lecture299 {
+public class Lecture299 {
     public static void main(String[] args) {
         System.out.println("-".repeat(30));
         System.out.println("Current working directory(cwd): " + new File("").getAbsolutePath());

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class lecture300 {
+public class Lecture300 {
     public static void main(String[] args) {
         useFile("testfile.txt");
         usePath("pathFile.txt");

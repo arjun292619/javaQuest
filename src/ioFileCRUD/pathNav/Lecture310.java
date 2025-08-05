@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class lecture310 {
+public class Lecture310 {
     public static void main(String[] args) {
         String lineSeparator = "-".repeat(50);
         String header = """

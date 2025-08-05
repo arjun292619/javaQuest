@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 
-public class lecture301 {
+public class Lecture301 {
     public static void main(String[] args) {
         String ls = "-".repeat(50);
         System.out.println(ls);

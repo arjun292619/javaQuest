@@ -1,20 +1,17 @@
 package ioFileCRUD.pathNav;
 
 import ioFileCRUD.pathNav.studentWrite.student.Course;
-import ioFileCRUD.pathNav.studentWrite.student.CourseEngagement;
 import ioFileCRUD.pathNav.studentWrite.student.Student;
-import ioFileCRUD.pathNav.studentWrite.student.StudentDemographics;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class lecture309 {
+public class Lecture309 {
     public static void main(String[] args) {
         String lineSeparator = "-".repeat(50);
         String header = """
@@ -69,4 +66,6 @@ public class lecture309 {
         }
 
     }
+
+
 }
