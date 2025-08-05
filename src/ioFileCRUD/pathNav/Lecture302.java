@@ -25,7 +25,7 @@ public class Lecture302 {
         }
 
         System.out.println(lineSeparator);
-        System.out.println("Listing using walk");
+        System.out.println("Listing and filtering using walk");
         try (Stream<Path> pathStream = Files.walk(currPath, 2)) {
             pathStream
                     .filter(Files::isRegularFile)
@@ -34,6 +34,40 @@ public class Lecture302 {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println(lineSeparator);
+        System.out.println("Listing and filtering using find");
+//        try (Stream<Path> pathStream = Files.find(currPath, 2,
+//                ((path, fAttributes) -> Files.isRegularFile(path)))) {
+//            pathStream
+        try (Stream<Path> pathStream = Files.find(currPath, Integer.MAX_VALUE,
+                ((path, fAttributes) ->
+                        fAttributes.isRegularFile() && fAttributes.size() > 2000))) {
+            pathStream
+                    .map(Lecture302::listDir)
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Path ideaFolderPath = currPath.resolve(".idea");
+        System.out.println(lineSeparator);
+        System.out.println("Using Directory Stream from Files");
+        try (var dirs = Files.newDirectoryStream(ideaFolderPath, "*.xml")) {
+            dirs.forEach(dir -> System.out.println(Lecture302.listDir(dir)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(lineSeparator);
+        System.out.println("Using Directory Stream from Files to filter by extension: Alternative to glob");
+        try (var dirs = Files.newDirectoryStream(ideaFolderPath,
+                p -> p.getFileName().toString().endsWith(".xml") && Files.isRegularFile(p) && Files.size(p) > 1000)) {
+            dirs.forEach(dir -> System.out.println(Lecture302.listDir(dir)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private static String listDir(Path path) {
