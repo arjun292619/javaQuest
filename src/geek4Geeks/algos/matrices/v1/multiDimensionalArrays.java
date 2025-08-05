@@ -62,6 +62,14 @@ public class multiDimensionalArrays {
 //        rotateBy90(sqArr);
         rotateBy90(sqArr, "naive");
         printArray(sqArr);
+
+        System.out.println(ls);
+        System.out.println("Print the spiral Traversal Path");
+        printArray(sqArr);
+        printSpiral(sqArr);
+
+        System.out.println();
+        System.out.println(ls);
     }
 
     private static void swap(int x, int y) {
@@ -157,6 +165,32 @@ public class multiDimensionalArrays {
         for (int r = 0; r < mat.length; r++) {
             for (int c = 0; c < mat[r].length; c++) {
                 mat[r][c] = temp[r][c];
+            }
+        }
+    }
+
+    private static void printSpiral(int[][] mat) {
+        int top = 0, right = mat.length - 1, bottom = mat.length - 1, left = 0;
+        while (top <= bottom && left <= right) {
+            for (int i = left; i <= right; i++) {
+                System.out.printf("%-5d", mat[top][i]);
+            }
+            top++;
+            for (int i = top; i <= bottom; i++) {
+                System.out.printf("%-5d", mat[i][right]);
+            }
+            right--;
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    System.out.printf("%-5d", mat[bottom][i]);
+                }
+                bottom--;
+            }
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    System.out.printf("%-5d", mat[i][left]);
+                }
+                left++;
             }
         }
     }
