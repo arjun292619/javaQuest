@@ -12,6 +12,7 @@ public class multiDimensionalArrays {
         int[][] multarr1 = new int[3][4];
         int[][] jaggedArr = new int[3][];
         int[][] sqArr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int[][] sortedMat = {{10, 20, 30, 40}, {15, 25, 35, 45}, {27, 29, 37, 48}, {32, 33, 39, 50}};
 
         for (int i = 0; i < multarr1.length; i++) {
             for (int j = 0; j < multarr1[i].length; j++) {
@@ -68,6 +69,12 @@ public class multiDimensionalArrays {
         printArray(sqArr);
         printSpiral(sqArr);
 
+        System.out.println();
+        System.out.println(ls);
+        System.out.println("Search and find");
+        printArray(sortedMat);
+        System.out.println(isPresent(sortedMat, 29));
+        searchInSorted(sortedMat, 29);
         System.out.println();
         System.out.println(ls);
     }
@@ -193,5 +200,33 @@ public class multiDimensionalArrays {
                 left++;
             }
         }
+    }
+
+    private static boolean isPresent(int[][] mat, int x) {
+        boolean flag = false;
+        for (int r = 0; r < mat.length; r++) {
+            for (int c = 0; c < mat[r].length; c++) {
+                if (mat[r][c] == x) {
+                    flag = true;
+                    return flag;
+                }
+            }
+        }
+        return flag;
+    }
+
+    private static void searchInSorted(int[][] mat, int x) {
+        int r = 0, c = mat[0].length - 1;
+        while (r < mat.length && c >= 0) {
+            if (mat[r][c] == x) {
+                System.out.printf("%d is present at location [%d,%d]", x, r, c);
+                return;
+            } else if (x > mat[r][c]) {
+                r++;
+            } else {
+                c--;
+            }
+        }
+        System.out.printf("%d is not present in the matrix", x);
     }
 }
