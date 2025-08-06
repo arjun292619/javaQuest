@@ -77,6 +77,10 @@ public class multiDimensionalArrays {
         searchInSorted(sortedMat, 29);
         System.out.println();
         System.out.println(ls);
+        int[][] medianMat = {{5, 10, 20, 30, 40}, {1, 2, 3, 4, 6}, {11, 13, 15, 17, 19}};
+        System.out.println("Median position of a Matrix");
+        printArray(medianMat);
+        System.out.println(getMedianInMatrix(medianMat));
     }
 
     private static void swap(int x, int y) {
@@ -228,5 +232,18 @@ public class multiDimensionalArrays {
             }
         }
         System.out.printf("%d is not present in the matrix", x);
+    }
+
+    private static int getMedianInMatrix(int[][] mat) {
+        int[] temp = new int[mat.length * mat[0].length];
+        int index = 0;
+        for (int r = 0; r < mat.length; r++) {
+            for (int c = 0; c < mat[r].length; c++) {
+                temp[index] = mat[r][c];
+                index++;
+            }
+        }
+        Arrays.sort(temp);
+        return temp[temp.length / 2];
     }
 }
